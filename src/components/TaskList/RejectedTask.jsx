@@ -67,6 +67,22 @@ const RejectedTask = ({ loggedInUser }) => {
     return colors[priority.toLowerCase()] || "bg-gray-100 text-gray-800 border-gray-200 ring-2 ring-gray-500/20";
   };
 
+  const handleAcceptTask = (task) => {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      const allTasks = JSON.parse(savedTasks);
+      const updatedTasks = allTasks.map(t => {
+        if (t.id === task.id) {
+          return { ...t, status: "accepted" };
+        }
+        return t;
+      });
+      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+      window.dispatchEvent(new Event('tasksUpdated'));
+      setSelectedTask(null);
+    }
+  };
+
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -118,7 +134,7 @@ const RejectedTask = ({ loggedInUser }) => {
                     >
                       <td className="whitespace-nowrap py-5 pl-6 pr-3 text-sm">
                         <div className="font-medium text-gray-900 group-hover:text-indigo-600 transition-colors">{task.title}</div>
-                        <div className="text-gray-500 mt-1 line-clamp-2">{task.description}</div>
+                        <div className="text-gray-500 mt-1 line-clamp-2 max-w-md">{task.description}</div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm">
                         <span className="inline-flex rounded-full px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 ring-2 ring-blue-500/20 capitalize">
@@ -161,7 +177,7 @@ const RejectedTask = ({ loggedInUser }) => {
       {selectedTask && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-lg flex items-center justify-center z-50" onClick={() => setSelectedTask(null)}>
           <div 
-            className="bg-white/95 rounded-2xl p-8 max-w-2xl w-full mx-4 shadow-2xl border border-gray-100/50 max-h-[90vh] overflow-y-auto transform transition-all duration-300 hover:shadow-indigo-500/10"
+            className="bg-white/95 rounded-2xl p-8 max-w-3xl w-full mx-4 shadow-2xl border border-gray-100/50 max-h-[90vh] overflow-y-auto transform transition-all duration-300 hover:shadow-indigo-500/10"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-8 sticky top-0 bg-white/95 py-2 border-b border-gray-100 z-10">
@@ -186,7 +202,7 @@ const RejectedTask = ({ loggedInUser }) => {
 
               <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200">
                 <h3 className="text-sm font-medium text-indigo-600 mb-2">Description</h3>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+                <p className="text-gray-700 leading-relaxed whitespace-pre-wrap max-h-48 overflow-y-auto">
                   {selectedTask.description || "No description provided"}
                 </p>
               </div>
@@ -226,6 +242,15 @@ const RejectedTask = ({ loggedInUser }) => {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              <div className="flex justify-end mt-8">
+                <button
+                  onClick={() => handleAcceptTask(selectedTask)}
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200"
+                >
+                  Accept Task
+                </button>
               </div>
             </div>
           </div>
