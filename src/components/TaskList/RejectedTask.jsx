@@ -220,12 +220,6 @@ const RejectedTask = ({ loggedInUser }) => {
                     <span className="inline-flex px-4 py-1.5 rounded-full text-sm font-semibold bg-red-100 text-red-700 ring-2 ring-red-500/20">
                       Rejected
                     </span>
-                    <button
-                      onClick={() => updateTaskStatus(selectedTask.id, "pending")}
-                      className="inline-flex px-4 py-1.5 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-700 ring-2 ring-yellow-500/20 hover:bg-yellow-200 transition-colors"
-                    >
-                      Move to Pending
-                    </button>
                   </div>
                 </div>
 
