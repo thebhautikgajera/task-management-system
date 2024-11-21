@@ -174,7 +174,7 @@ const FailedTask = ({ loggedInUser }) => {
                         onClick={() => updateTaskStatus(task.title, 'in_progress')}
                         className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
                       >
-                        Retry
+                        Accept
                       </button>
                       <button
                         onClick={() => updateTaskStatus(task.title, 'cancelled')}
