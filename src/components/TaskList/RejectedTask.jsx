@@ -67,28 +67,6 @@ const RejectedTask = ({ loggedInUser }) => {
     return colors[priority.toLowerCase()] || "bg-gray-100 text-gray-800 border-gray-200";
   };
 
-  const updateTaskStatus = (taskId, newStatus) => {
-    const savedTasks = localStorage.getItem('tasks');
-    if (savedTasks) {
-      const allTasks = JSON.parse(savedTasks);
-      const updatedTasks = allTasks.map(task => {
-        if (task.id === taskId) {
-          return { ...task, status: newStatus };
-        }
-        return task;
-      });
-      
-      localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-      
-      // Dispatch events to notify other components
-      window.dispatchEvent(new Event('tasksUpdated'));
-      window.dispatchEvent(new Event('storage'));
-      window.dispatchEvent(new Event('employeeUpdated')); // Add this line to update employee status
-      
-      setSelectedTask(null);
-    }
-  };
-
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
