@@ -227,7 +227,7 @@ const AdminStats = () => {
       </div>
 
       {/* Detailed Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-8 mt-8">
         {/* Priority Distribution */}
         <div className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100">
           <div className="flex items-center mb-6">
