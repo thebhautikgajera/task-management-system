@@ -369,87 +369,7 @@ const AdminAllTasklist = () => {
         </div>
       </div>
 
-       {/* View Task Modal */}
-       {showViewTaskModal && selectedTask && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50">
-          <div className="bg-white/95 rounded-2xl p-8 max-w-2xl w-full mx-4 shadow-2xl border border-gray-100/50 max-h-[90vh] overflow-y-auto transform transition-all duration-300 hover:shadow-indigo-500/10">
-            <div className="flex justify-between items-center mb-8 sticky top-0 bg-white/95 py-2 border-b border-gray-100">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Task Details</h2>
-              <button 
-                onClick={() => setShowViewTaskModal(false)}
-                className="text-gray-400 hover:text-gray-600 transition-all duration-200 hover:rotate-90"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <div className="space-y-6">
-              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                <h3 className="text-sm font-medium text-indigo-500 mb-2">Title</h3>
-                <p className="text-gray-900 text-lg font-medium">{selectedTask.title}</p>
-              </div>
-
-              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                <h3 className="text-sm font-medium text-indigo-500 mb-2">Description</h3>
-                <p className="text-gray-700 leading-relaxed">{selectedTask.description || "No description provided"}</p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Assigned To</h3>
-                  <p className="text-gray-900 font-medium">{selectedTask.assignedTo}</p>
-                </div>
-
-                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Category</h3>
-                  <p className="text-gray-900 font-medium">{selectedTask.category || "General"}</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Priority</h3>
-                  <span className={`inline-flex px-4 py-1.5 rounded-full text-sm font-semibold ${
-                    selectedTask.priority.toLowerCase() === 'high' ? 'bg-red-100 text-red-700 ring-2 ring-red-500/20' :
-                    selectedTask.priority.toLowerCase() === 'medium' ? 'bg-yellow-100 text-yellow-700 ring-2 ring-yellow-500/20' :
-                    'bg-green-100 text-green-700 ring-2 ring-green-500/20'
-                  }`}>
-                    {selectedTask.priority}
-                  </span>
-                </div>
-
-                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Status</h3>
-                  <select
-                    value={selectedTask.status}
-                    onChange={(e) => handleUpdateStatus(selectedTask.title, selectedTask.assignedTo, e.target.value)}
-                    className="w-full text-sm text-gray-700 px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-indigo-300 cursor-pointer shadow-sm"
-                  >
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Failed">Failed</option>
-                    <option value="Rejected">Rejected</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
-                <h3 className="text-sm font-medium text-indigo-500 mb-2">
-                  {selectedTask.status === "completed" ? "Completed Date" : "Due Date"}
-                </h3>
-                <p className="text-gray-900 font-medium">
-                  {selectedTask.status === "completed" 
-                    ? moment().format("MMM DD, YYYY")
-                    : moment(selectedTask.dueDate).format("MMM DD, YYYY")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+       
 
       {/* Edit Task Modal */}
       {showEditTaskModal && editingTask && (
@@ -666,6 +586,88 @@ const AdminAllTasklist = () => {
               >
                 Create Task
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* View Task Modal */}
+       {showViewTaskModal && selectedTask && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50">
+          <div className="bg-white/95 rounded-2xl p-8 max-w-2xl w-full mx-4 shadow-2xl border border-gray-100/50 max-h-[90vh] overflow-y-auto transform transition-all duration-300 hover:shadow-indigo-500/10">
+            <div className="flex justify-between items-center mb-8 sticky top-0 bg-white/95 py-2 border-b border-gray-100">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Task Details</h2>
+              <button 
+                onClick={() => setShowViewTaskModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-all duration-200 hover:rotate-90"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                <h3 className="text-sm font-medium text-indigo-500 mb-2">Title</h3>
+                <p className="text-gray-900 text-lg font-medium">{selectedTask.title}</p>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                <h3 className="text-sm font-medium text-indigo-500 mb-2">Description</h3>
+                <p className="text-gray-700 leading-relaxed">{selectedTask.description || "No description provided"}</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Assigned To</h3>
+                  <p className="text-gray-900 font-medium">{selectedTask.assignedTo}</p>
+                </div>
+
+                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Category</h3>
+                  <p className="text-gray-900 font-medium">{selectedTask.category || "General"}</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Priority</h3>
+                  <span className={`inline-flex px-4 py-1.5 rounded-full text-sm font-semibold ${
+                    selectedTask.priority.toLowerCase() === 'high' ? 'bg-red-100 text-red-700 ring-2 ring-red-500/20' :
+                    selectedTask.priority.toLowerCase() === 'medium' ? 'bg-yellow-100 text-yellow-700 ring-2 ring-yellow-500/20' :
+                    'bg-green-100 text-green-700 ring-2 ring-green-500/20'
+                  }`}>
+                    {selectedTask.priority}
+                  </span>
+                </div>
+
+                <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                  <h3 className="text-sm font-medium text-indigo-500 mb-2">Status</h3>
+                  <select
+                    value={selectedTask.status}
+                    onChange={(e) => handleUpdateStatus(selectedTask.title, selectedTask.assignedTo, e.target.value)}
+                    className="w-full text-sm text-gray-700 px-3 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 hover:border-indigo-300 cursor-pointer shadow-sm"
+                  >
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Failed">Failed</option>
+                    <option value="Rejected">Rejected</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-gray-50 to-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-200">
+                <h3 className="text-sm font-medium text-indigo-500 mb-2">
+                  {selectedTask.status === "completed" ? "Completed Date" : "Due Date"}
+                </h3>
+                <p className="text-gray-900 font-medium">
+                  {selectedTask.status === "completed" 
+                    ? moment().format("MMM DD, YYYY")
+                    : moment(selectedTask.dueDate).format("MMM DD, YYYY")}
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import NewTask from './NewTask';
 import FailedTask from './FailedTask';
 import CompleteTask from './CompleteTask';
 import RejectedTask from './RejectedTask';
+import DiscussionPanel from './DiscussionPanel';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
@@ -16,7 +17,8 @@ const Tasklist = ({ loggedInUser }) => {
     { id: 'active', label: 'Active Tasks', component: <AcceptTask loggedInUser={loggedInUser} /> },
     { id: 'completed', label: 'Completed Tasks', component: <CompleteTask loggedInUser={loggedInUser} /> },
     { id: 'failed', label: 'Failed Tasks', component: <FailedTask loggedInUser={loggedInUser} /> },
-    { id: 'rejected', label: 'Rejected Tasks', component: <RejectedTask loggedInUser={loggedInUser} /> }
+    { id: 'rejected', label: 'Rejected Tasks', component: <RejectedTask loggedInUser={loggedInUser} /> },
+    { id: 'discussion', label: 'Discussion', component: <DiscussionPanel /> }
   ];
 
   return (

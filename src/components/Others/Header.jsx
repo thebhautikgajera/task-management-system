@@ -5,7 +5,9 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const Header = ({ loggedInUser }) => {
-  const employeeName = loggedInUser.name;
+  const firstName = loggedInUser.name.split(' ')[0];
+  const lastName = loggedInUser.name.split(' ')[1];
+  const username = loggedInUser.username;
   const [mounted, setMounted] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
@@ -46,8 +48,9 @@ const Header = ({ loggedInUser }) => {
           <div className="flex items-center justify-between">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-pink-200 to-blue-200 drop-shadow-lg">
-                Hello, {employeeName}!
+                Hello, {username}!
               </h1>
+              <p className="text-gray-300 text-base font-light">{firstName} {lastName}</p>
               <p className="text-gray-300 text-base font-light">Have a wonderful and productive day ahead</p>
             </div>
             <div className="flex items-center space-x-6">
@@ -56,7 +59,7 @@ const Header = ({ loggedInUser }) => {
                 <p className="text-base font-semibold text-white animate-pulse">Loading...</p>
               </div>
               <div className="h-12 w-12 rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500 flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer border-2 border-white/30">
-                <span className="text-white font-bold text-lg">{getInitials(employeeName)}</span>
+                <span className="text-white font-bold text-lg">{getInitials(username)}</span>
               </div>
               <button onClick={handleLogout} className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 rounded-lg hover:from-violet-600 hover:via-purple-600 hover:to-blue-700 hover:scale-105 transition-all duration-300 shadow-xl border border-white/20">
                 Logout
@@ -75,8 +78,9 @@ const Header = ({ loggedInUser }) => {
         <div className="flex items-center justify-between">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-pink-200 to-blue-200 drop-shadow-lg">
-              {getGreeting()}, {employeeName}!
+              {getGreeting()}, {username}!
             </h1>
+            <p className="text-gray-300 text-base font-light">{firstName} {lastName}</p>
             <p className="text-gray-300 text-base font-light">Have a wonderful and productive day ahead</p>
           </div>
           <div className="flex items-center space-x-6">
@@ -88,7 +92,7 @@ const Header = ({ loggedInUser }) => {
               </div>
             </div>
             <div className="h-12 w-12 rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500 flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer border-2 border-white/30">
-              <span className="text-white font-bold text-lg">{getInitials(employeeName)}</span>
+              <span className="text-white font-bold text-lg">{getInitials(username)}</span>
             </div>
             <button onClick={handleLogout} className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-violet-500 via-purple-500 to-blue-600 rounded-lg hover:from-violet-600 hover:via-purple-600 hover:to-blue-700 hover:scale-105 transition-all duration-300 shadow-xl border border-white/20">
               Logout
@@ -102,7 +106,8 @@ const Header = ({ loggedInUser }) => {
 
 Header.propTypes = {
   loggedInUser: PropTypes.shape({
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
   }).isRequired
 };
 

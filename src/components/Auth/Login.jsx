@@ -12,6 +12,7 @@ const Login = ({handleLogin}) => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [showNote, setShowNote] = useState(false);
 
   // Load saved credentials on mount
   useEffect(() => {
@@ -70,6 +71,75 @@ const Login = ({handleLogin}) => {
         <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-purple-500/10 to-blue-500/10 animate-gradient"></div>
       </div>
 
+      {/* Note Popup Overlay */}
+      {showNote && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="bg-gradient-to-br from-violet-900/90 to-indigo-900/90 p-8 rounded-3xl border border-white/20 shadow-2xl max-w-2xl w-[90%] relative transform transition-all duration-300 scale-100 animate-fadeIn">
+            <div className="absolute -top-4 -right-4">
+              <button
+                onClick={() => setShowNote(false)}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full text-white/80 hover:text-white transition-all duration-300 group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 transform group-hover:rotate-90 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl shadow-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Login Information</h3>
+              <p className="text-white/60">Here&apos;s everything you need to know about logging in</p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-purple-500/20 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Admin Access</h4>
+                    <p className="text-white/60">Email: <span className="text-purple-300">admin@gmail.com</span></p>
+                    <p className="text-white/60">Password: <span className="text-purple-300">admin</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/5 p-4 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors duration-300">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-pink-500/20 rounded-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-1">Employee Access</h4>
+                    <p className="text-white/60">Email: <span className="text-purple-300">john.doe@company.com</span></p>
+                    <p className="text-white/60">Password: <span className="text-purple-300">employee</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => setShowNote(false)}
+                className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105"
+              >
+                Got it, thanks!
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="backdrop-blur-xl bg-white/10 p-8 rounded-3xl shadow-2xl w-[500px] border border-white/20 relative z-10 hover:shadow-purple-500/20 transition-all duration-500">
         <div className="mb-8 text-center">
           <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-violet-400 to-purple-600 rounded-2xl shadow-xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-all duration-300">
@@ -83,6 +153,15 @@ const Login = ({handleLogin}) => {
           <p className="text-gray-300 text-base font-light">
             Sign in to continue your journey
           </p>
+          <button
+            onClick={() => setShowNote(true)}
+            className="mt-4 px-4 py-2 text-sm text-white/80 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-white/20 flex items-center gap-2 mx-auto"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Need help?
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">

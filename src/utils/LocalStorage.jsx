@@ -5,10 +5,11 @@ const employeesData = [
       "id": 101,
       "firstName": "John",
       "lastName": "Doe",
-      "name": "John Doe", 
-      "email": "john.doe@company.com",
-      "password": "123",
-      "department": "Finance",
+      "name": "John Doe",
+      "username": "johndoe",
+      "email": "johndoe@gmail.com",
+      "password": "Johndoe@123",
+      "department": "Finance", 
       "role": "Financial Analyst",
       "joinDate": moment("2023-01-15").format("MMM D, YYYY"),
       "tasks": [
@@ -29,7 +30,7 @@ const employeesData = [
           "taskDescription": "Participate in the weekly team sync-up.",
           "deadline": moment().add(17, 'days').format('YYYY-MM-DD'),
           "assignedDate": moment().format('YYYY-MM-DD'),
-          "category": "Meetings", 
+          "category": "Meetings",
           "active": true,
           "newTask": true,
           "completed": false,
@@ -49,6 +50,7 @@ const employeesData = [
       "firstName": "Jane",
       "lastName": "Smith",
       "name": "Jane Smith",
+      "username": "jane.smith",
       "email": "jane.smith@company.com",
       "password": "123",
       "department": "Human Resources",
@@ -92,7 +94,8 @@ const employeesData = [
       "firstName": "Michael",
       "lastName": "Brown",
       "name": "Michael Brown",
-      "email": "michael.brown@company.com", 
+      "username": "michael.brown",
+      "email": "michael.brown@company.com",
       "password": "123",
       "department": "Engineering",
       "role": "Software Developer",
@@ -135,6 +138,7 @@ const employeesData = [
       "firstName": "Emily",
       "lastName": "Davis",
       "name": "Emily Davis",
+      "username": "emily.davis",
       "email": "emily.davis@company.com",
       "password": "123",
       "department": "Design",
@@ -178,6 +182,7 @@ const employeesData = [
       "firstName": "Daniel",
       "lastName": "Jones",
       "name": "Daniel Jones",
+      "username": "daniel.jones",
       "email": "daniel.jones@company.com",
       "password": "123",
       "department": "Operations",
@@ -216,124 +221,6 @@ const employeesData = [
         "failed": 1
       }
     },
-    {
-      "id": 106,
-      "firstName": "Test",
-      "lastName": "Employee",
-      "name": "Test Employee",
-      "email": "employee@company.com",
-      "password": "123",
-      "department": "Marketing",
-      "role": "Marketing Specialist",
-      "joinDate": moment("2023-06-01").format("MMM D, YYYY"),
-      "tasks": [
-        {
-          "taskTitle": "Marketing campaign planning",
-          "taskDescription": "Develop strategy for Q1 2024 marketing initiatives.",
-          "deadline": moment().add(24, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": true,
-          "newTask": true,
-          "completed": false,
-          "failed": false,
-          "priority": "High"
-        },
-        {
-          "taskTitle": "Social media content creation",
-          "taskDescription": "Create and schedule content for next month's social media posts.",
-          "deadline": moment().add(27, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": true,
-          "newTask": true,
-          "completed": false,
-          "failed": false,
-          "priority": "Medium"
-        },
-        {
-          "taskTitle": "Email newsletter campaign",
-          "taskDescription": "Complete the monthly email newsletter campaign.",
-          "deadline": moment().subtract(2, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(10, 'days').format('YYYY-MM-DD'),
-          "completedDate": moment().subtract(1, 'days').format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": false,
-          "newTask": false,
-          "completed": true,
-          "failed": false,
-          "priority": "High"
-        },
-        {
-          "taskTitle": "Website redesign project",
-          "taskDescription": "Complete the website redesign for Q4 launch.",
-          "deadline": moment().subtract(5, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(30, 'days').format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": false,
-          "newTask": false,
-          "completed": false,
-          "failed": true,
-          "priority": "High"
-        },
-        {
-          "taskTitle": "Brand guidelines update",
-          "taskDescription": "Update company brand guidelines with new visual elements.",
-          "deadline": moment().subtract(3, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(15, 'days').format('YYYY-MM-DD'),
-          "completedDate": moment().subtract(2, 'days').format('YYYY-MM-DD'),
-          "category": "Research",
-          "active": false,
-          "newTask": false,
-          "completed": true,
-          "failed": false,
-          "priority": "Medium"
-        },
-        {
-          "taskTitle": "Marketing analytics report",
-          "taskDescription": "Generate comprehensive Q4 marketing performance report.",
-          "deadline": moment().subtract(4, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(20, 'days').format('YYYY-MM-DD'),
-          "completedDate": moment().subtract(3, 'days').format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": false,
-          "newTask": false,
-          "completed": true,
-          "failed": false,
-          "priority": "High"
-        },
-        {
-          "taskTitle": "Customer feedback analysis",
-          "taskDescription": "Analyze Q4 customer feedback and prepare improvement recommendations.",
-          "deadline": moment().subtract(6, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(25, 'days').format('YYYY-MM-DD'),
-          "category": "Research",
-          "active": false,
-          "newTask": false,
-          "completed": false,
-          "failed": true,
-          "priority": "High"
-        },
-        {
-          "taskTitle": "SEO optimization project",
-          "taskDescription": "Implement SEO improvements across all marketing channels.",
-          "deadline": moment().subtract(8, 'days').format('YYYY-MM-DD'),
-          "assignedDate": moment().subtract(28, 'days').format('YYYY-MM-DD'),
-          "category": "Marketing",
-          "active": false,
-          "newTask": false,
-          "completed": false,
-          "failed": true,
-          "priority": "Medium"
-        }
-      ],
-      "taskCount": {
-        "active": 2,
-        "new": 2,
-        "completed": 3,
-        "failed": 3
-      }
-    }
 ];
 
 const adminData = [
@@ -342,6 +229,7 @@ const adminData = [
       "firstName": "Admin",
       "lastName": "User",
       "name": "Admin User",
+      "username": "admin.user",
       "email": "admin@company.com",
       "password": "123"
     }

@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const AdminHeader = () => {
   const adminName = "Admin";
+  const username = "admin";
 
   const [mounted, setMounted] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -45,8 +46,9 @@ const AdminHeader = () => {
         <div className="flex items-center justify-between">
           <div className="space-y-2">
             <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-pink-200 to-blue-200 drop-shadow-lg">
-              {getGreeting()}, {adminName}!
+              {getGreeting()}, {username}!
             </h1>
+            <p className="text-gray-300 text-base font-light">{adminName}</p>
             <p className="text-gray-300 text-base font-light">Have a wonderful and productive day ahead</p>
           </div>
           <div className="flex items-center space-x-6">

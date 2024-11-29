@@ -27,7 +27,7 @@ const App = () => {
       return;
     }
 
-    if (formEmail === "admin@gmail.com" && formPassword === "admin") {
+    if (formEmail === "admin@gmail.com" && formPassword === "Admin@123") {
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({role: "admin"}));
       toast.success("Welcome Admin!");

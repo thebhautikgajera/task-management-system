@@ -6,6 +6,7 @@ import { getLocalStorage, setLocalStorage } from '../utils/LocalStorage';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  // setLocalStorage();
 
   // localStorage.clear();
 
