@@ -155,12 +155,29 @@ const Login = ({handleLogin}) => {
           </p>
           <button
             onClick={() => setShowNote(true)}
-            className="mt-4 px-4 py-2 text-sm text-white/80 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/10 hover:border-white/20 flex items-center gap-2 mx-auto"
+            className="mt-4 px-6 py-2.5 text-sm font-medium text-white/90 hover:text-white 
+              bg-gradient-to-r from-purple-500/20 to-pink-500/20 
+              hover:from-purple-500/30 hover:to-pink-500/30
+              rounded-full transition-all duration-300 transform hover:scale-105 
+              border border-white/20 hover:border-white/30 
+              flex items-center justify-center gap-3 mx-auto
+              shadow-lg shadow-purple-500/5 hover:shadow-purple-500/20"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-5 w-5 text-purple-300" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+              />
             </svg>
-            Need help?
+            <span>Click Here for Login Instructions</span>
           </button>
         </div>
 
