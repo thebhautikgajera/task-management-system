@@ -107,7 +107,7 @@ const Login = ({handleLogin}) => {
                   <div>
                     <h4 className="text-white font-medium mb-1">Admin Access</h4>
                     <p className="text-white/60">Email: <span className="text-purple-300">admin@gmail.com</span></p>
-                    <p className="text-white/60">Password: <span className="text-purple-300">admin</span></p>
+                    <p className="text-white/60">Password: <span className="text-purple-300">Admin@123</span></p>
                   </div>
                 </div>
               </div>
@@ -121,8 +121,8 @@ const Login = ({handleLogin}) => {
                   </div>
                   <div>
                     <h4 className="text-white font-medium mb-1">Employee Access</h4>
-                    <p className="text-white/60">Email: <span className="text-purple-300">john.doe@company.com</span></p>
-                    <p className="text-white/60">Password: <span className="text-purple-300">employee</span></p>
+                      <p className="text-white/60">Email: <span className="text-purple-300">johndoe@gmail.com</span></p>
+                      <p className="text-white/60">Password: <span className="text-purple-300">Johndoe@123</span></p>
                   </div>
                 </div>
               </div>
